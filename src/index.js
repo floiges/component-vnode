@@ -8,14 +8,21 @@ class MyComponent {
   }
 }
 
-// VNode
+// 组件 VNode
+// 组件 VNode 的 tag 属性指向组件自身
+// render 渲染的时候，需要根据 tag 来判断当前 VNode 是 html 标签还是组件
 const componentVNode = {
   tag: MyComponent,
 }
 
-// render
+// 将 componentVNode 挂载到 id 为 app 的元素下面
 render(componentVNode, document.getElementById('app'))
 
+/**
+ * 渲染器，永远渲染真实 DOM
+ * @param {*} vnode 将要渲染的 vnode
+ * @param {*} container 元素挂载点
+ */
 function render(vnode, container) {
   if (typeof vnode.tag === 'string') {
     // html 标签
